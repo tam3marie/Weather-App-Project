@@ -23,11 +23,11 @@ small {
 .card {
   max-width: 700px;
 }
-.bg-sunny-day {
+/* .bg-sunny-day {
   background-image: url("images/sunny-day.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-}
+} */
 .form-control {
   margin-bottom: 0;
 }
@@ -62,7 +62,7 @@ small {
 }
 .currentTemp {
   color: #983ba8;
-  font-size: 50px;
+  font-size: 60px;
   font-weight: 700;
   margin: 0 0 30px 0;
   padding: 0;
@@ -74,20 +74,21 @@ small {
   font-weight: 400;
   vertical-align: text-top;
 }
-.fahrenheit {
+.active {
   color: rgb(22, 21, 21);
   text-shadow: 0.3px 0.3px 0.3px white;
+  text-decoration: none;
 }
-.fahrenheit:hover {
-  color: blue;
-  cursor: pointer;
-  text-decoration: underline;
+.active:hover {
+  color: black;
+  cursor: default;
+  text-decoration: none;
 }
-.celsius {
+.not-active {
   color: rgb(105, 104, 104);
   text-shadow: 0.3px 0.3px 0.3px white;
 }
-.celsius:hover {
+.not-active:hover {
   color: blue;
   cursor: pointer;
   text-decoration: underline;

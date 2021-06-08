@@ -70,7 +70,10 @@ function showWeatherData(response) {
     response.data.main.temp
   );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = response.data.wind.speed;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  fahrenheitTemperature = response.data.main.temp;
 }
 
 function currentCityLocation(event) {
@@ -87,22 +90,29 @@ function currentCityWeather(position) {
 function displayFahrenheit(event) {
   event.preventDefault();
   let currentTempF = document.querySelector("#current-degrees");
-  currentTempF.innerHTML = "66";
-  fahrenheit.style.textDecoration = "underline";
-  celsius.style.textDecoration = "none";
+  currentTempF.innerHTML = Math.round(fahrenheitTemperature);
+  fahrenheitLink.classList.add("active");
+  fahrenheitLink.classList.remove("not-active");
+  celsiusLink.classList.add("not-active");
+  celsiusLink.classList.remove("active");
 }
 
 function displayCelsius(event) {
   event.preventDefault();
   let currentTempC = document.querySelector("#current-degrees");
-  currentTempC.innerHTML = "19";
-  celsius.style.textDecoration = "underline";
-  fahrenheit.style.textDecoration = "none";
+  currentTempC.innerHTML = Math.round(((fahrenheitTemperature - 32) * 5) / 9);
+  celsiusLink.classList.add("active");
+  celsiusLink.classList.remove("not-active");
+  fahrenheitLink.classList.add("not-active");
+  fahrenheitLink.classList.remove("active");
 }
-let fahrenheitLink = document.querySelector("#fahrenheit");
+
+let fahrenheitTemperature = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheit);
 
-let celsiusLink = document.querySelector("#celsius");
+let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsius);
 
 let h1 = document.querySelector("h1");
