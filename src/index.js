@@ -1,39 +1,47 @@
-let days = [
-  `Sunday`,
-  `Monday`,
-  `Tuesday`,
-  `Wednesday`,
-  `Thursday`,
-  `Friday`,
-  `Saturday`,
-  `Sunday`,
-];
-let months = [
-  `January`,
-  `February`,
-  `March`,
-  `April`,
-  `May`,
-  `June`,
-  `July`,
-  `August`,
-  `September`,
-  `October`,
-  `November`,
-  `December`,
-];
-let currentDate = document.querySelector("#current-date");
-let currentTime = document.querySelector("#current-time");
-let timeDateNow = new Date();
-let localtime = timeDateNow.toString();
-let hours = timeDateNow.getHours();
-let minutes = timeDateNow.getMinutes();
-let day = days[timeDateNow.getDay()];
-let month = months[timeDateNow.getMonth()];
-let date = timeDateNow.getDate();
-let year = timeDateNow.getFullYear();
-currentDate.innerHTML = `${day}, ${month}, ${date}, ${year}`;
-currentTime.innerHTML = `${hours}:${minutes}`;
+function formDateTime() {
+  let days = [
+    `Sunday`,
+    `Monday`,
+    `Tuesday`,
+    `Wednesday`,
+    `Thursday`,
+    `Friday`,
+    `Saturday`,
+    `Sunday`,
+  ];
+  let months = [
+    `January`,
+    `February`,
+    `March`,
+    `April`,
+    `May`,
+    `June`,
+    `July`,
+    `August`,
+    `September`,
+    `October`,
+    `November`,
+    `December`,
+  ];
+  let currentDate = document.querySelector("#current-date");
+  let currentTime = document.querySelector("#current-time");
+  let timeDateNow = new Date();
+  let localtime = timeDateNow.toString();
+  let hours = timeDateNow.getHours();
+  let minutes = timeDateNow.getMinutes();
+  let day = days[timeDateNow.getDay()];
+  let month = months[timeDateNow.getMonth()];
+  let date = timeDateNow.getDate();
+  let year = timeDateNow.getFullYear();
+  currentDate.innerHTML = `${day}, ${month}, ${date}, ${year}`;
+  currentTime.innerHTML = `${hours}:${minutes}`;
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+}
 
 function search(searchCityInput) {
   let weatherApiKey = "f909d15f15ba4c8f6204927cf3507a71";
@@ -132,4 +140,5 @@ searchCity.addEventListener("submit", searchForCity);
 let currentCity = document.querySelector("#current-button");
 currentCity.addEventListener("click", currentCityLocation);
 
+formDateTime();
 search("New York");
