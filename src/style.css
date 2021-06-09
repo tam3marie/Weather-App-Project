@@ -12,7 +12,7 @@ h1 {
 }
 
 h2 {
-  margin-top: 20px;
+  margin-top: -20px;
 }
 small {
   color: teal;
@@ -62,7 +62,7 @@ small {
 }
 .currentTemp {
   color: #983ba8;
-  font-size: 60px;
+  font-size: 70px;
   font-weight: 700;
   margin: 0 0 30px 0;
   padding: 0;
@@ -95,6 +95,7 @@ small {
 }
 .details {
   color: rgb(61, 60, 60);
+  font-size: 18px;
   font-weight: 500;
   margin-top: 15px;
 }
