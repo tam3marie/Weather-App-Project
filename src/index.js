@@ -46,10 +46,11 @@ function formDateTime() {
 function search(searchCityInput) {
   let weatherApiKey = "f909d15f15ba4c8f6204927cf3507a71";
   let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchCityInput}&units=imperial&appid=${weatherApiKey}`;
-  axios.get(weatherApiUrl).then(showWeatherData);
+  axios.get(weatherApiUrl).then(displayCurrentWeather);
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
@@ -75,6 +76,12 @@ function displayForecast() {
   forecast.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  let weatherApiKey = "f909d15f15ba4c8f6204927cf3507a71";
+  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${weatherApiKey}&units=imperial`;
+  axios.get(forecastApiUrl).then(displayForecast);
+}
+
 function searchForCity(event) {
   event.preventDefault();
   let searchCityInput = document.querySelector("#search-city-input").value;
@@ -84,8 +91,7 @@ function searchForCity(event) {
     alert(`Please enter a city.`);
   }
 }
-function showWeatherData(response) {
-  console.log(response);
+function displayCurrentWeather(response) {
   let searchCityInput = document.querySelector("#search-city-input");
   searchCityInput.value = "";
   document.querySelector("#display-city").innerHTML = response.data.name;
@@ -118,6 +124,7 @@ function showWeatherData(response) {
     .setAttribute("alt", response.data.weather[0].description);
 
   fahrenheitTemperature = response.data.main.temp;
+  getForecast(response.data.coord);
 }
 
 function currentCityLocation(event) {
@@ -128,7 +135,7 @@ function currentCityWeather(position) {
   console.log(position);
   let weatherApiKey = "f909d15f15ba4c8f6204927cf3507a71";
   let currentPositionWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${weatherApiKey}`;
-  axios.get(currentPositionWeatherUrl).then(showWeatherData);
+  axios.get(currentPositionWeatherUrl).then(displayCurrentWeather);
 }
 
 function displayFahrenheit(event) {
@@ -168,4 +175,3 @@ currentCity.addEventListener("click", currentCityLocation);
 
 formDateTime();
 search("New York");
-displayForecast();
