@@ -49,6 +49,29 @@ function search(searchCityInput) {
   axios.get(weatherApiUrl).then(showWeatherData);
 }
 
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (days) {
+  let forecastHTML = '
+    <div class="col-sm">
+      <div class="forcast-weekday">${day}</div>
+      <img
+        src="http://openweathermap.org/img/wn/10d@2x.png"
+        alt=""
+        class="forcast-icon"
+        width="42"
+      />
+      <div class="forcast-temps">
+        <span class="forecast-temp-high">59</span>/
+        <span class="forecast-temp-low">75</span>
+      </div>
+    </div>
+  ';
+});
+  let forecast = forecastHTML;
+}
+
 function searchForCity(event) {
   event.preventDefault();
   let searchCityInput = document.querySelector("#search-city-input").value;
@@ -142,3 +165,4 @@ currentCity.addEventListener("click", currentCityLocation);
 
 formDateTime();
 search("New York");
+displayForecast();
