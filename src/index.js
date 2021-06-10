@@ -51,11 +51,13 @@ function search(searchCityInput) {
 
 function displayForecast() {
   let forecast = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-  days.forEach(function (days) {
-  let forecastHTML = '
-    <div class="col-sm">
-      <div class="forcast-weekday">${day}</div>
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-sm">
+      <div class="forecast-weekday">${day}</div>
       <img
         src="http://openweathermap.org/img/wn/10d@2x.png"
         alt=""
@@ -63,12 +65,13 @@ function displayForecast() {
         width="42"
       />
       <div class="forcast-temps">
-        <span class="forecast-temp-high">59</span>/
+        <span class="forecast-temp-high">59</span>
+        /
         <span class="forecast-temp-low">75</span>
       </div>
-    </div>
-  ';
-});
+    </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
 }
 
