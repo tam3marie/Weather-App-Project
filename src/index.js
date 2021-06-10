@@ -69,7 +69,7 @@ function displayForecast() {
     </div>
   ';
 });
-  let forecast = forecastHTML;
+  forecast.innerHTML = forecastHTML;
 }
 
 function searchForCity(event) {
