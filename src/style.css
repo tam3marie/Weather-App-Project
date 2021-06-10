@@ -1,9 +1,9 @@
 body {
-  border: #983ba8;
+  border: #663399;
   font-family: "Roboto", sans-serif;
 }
 h1 {
-  color: #983ba8;
+  color: #663399;
   font-weight: 700;
   margin-bottom: 19px;
   margin-top: 10px;
@@ -22,6 +22,8 @@ small {
 }
 .card {
   max-width: 700px;
+  background-color: white;
+  border-color: #e5e1c7;
 }
 /* .bg-sunny-day {
   background-image: url("images/sunny-day.jpg");
@@ -38,18 +40,19 @@ small {
   width: 100%;
 }
 .btn-search:hover {
-  background: #983ba8;
-  border: #983ba8;
+  background: #62baac;
+  border: #62baac;
+  color: white;
 }
 .btn-current {
-  background: #983ba8;
-  border: #983ba8;
+  background: #663399;
+  border: #663399;
   color: white;
   width: 100%;
 }
 .btn-current:hover {
-  background: teal;
-  border: teal;
+  background: #cf92ff;
+  border: #cf92ff;
   color: white;
 }
 .info {
@@ -61,7 +64,7 @@ small {
   margin-top: 15px;
 }
 .currentTemp {
-  color: #983ba8;
+  color: #663399;
   font-size: 70px;
   font-weight: 700;
   margin: 0 0 30px 0;
@@ -75,12 +78,12 @@ small {
   vertical-align: text-top;
 }
 .active {
-  color: rgb(22, 21, 21);
+  color: rgb(61, 60, 60);
   text-shadow: 0.3px 0.3px 0.3px white;
   text-decoration: none;
 }
 .active:hover {
-  color: black;
+  color: rgb(61, 60, 60);
   cursor: default;
   text-decoration: none;
 }
@@ -100,7 +103,7 @@ small {
   margin-top: 15px;
 }
 .switch-to-five {
-  color: #983ba8;
+  color: teal;
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 5px;
@@ -114,28 +117,35 @@ small {
   text-decoration: none;
   text-shadow: 0.3px 0.3px 0.3px white;
 }
-.five-forcast {
+.five-day-forcast {
   text-align: center;
+  margin-bottom: 15px;
 }
 .switch-to-hourly:hover {
   color: blue;
   cursor: pointer;
   text-decoration: underline;
 }
-.weekday {
+.forecast-weekday {
   color: rgb(61, 60, 60);
   font-weight: bold;
   text-decoration: underline;
   text-shadow: 0.3px 0.3px 0.3px white;
   text-underline-offset: 3px;
 }
-.emoji {
-  font-size: 40px;
-}
-.low-high {
-  color: teal;
+.high-low-temps,
+.forcast-temps {
+  color: rgb(61, 60, 60);
   font-weight: bold;
   text-shadow: 0.3px 0.3px 0.3px white;
+}
+.high-temp,
+.forecast-temp-high {
+  color: #62baac;
+}
+.low-temp,
+.forecast-temp-low {
+  color: #cf92ff;
 }
 #fahrenheit,
 #celsius {

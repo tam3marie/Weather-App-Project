@@ -33,14 +33,14 @@ function formDateTime() {
   let month = months[timeDateNow.getMonth()];
   let date = timeDateNow.getDate();
   let year = timeDateNow.getFullYear();
-  currentDate.innerHTML = `${day}, ${month}, ${date}, ${year}`;
-  currentTime.innerHTML = `${hours}:${minutes}`;
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
   if (hours < 10) {
     hours = `0${hours}`;
   }
+  currentDate.innerHTML = `${day}, ${month}, ${date}, ${year}`;
+  currentTime.innerHTML = `${hours}:${minutes}`;
 }
 
 function search(searchCityInput) {

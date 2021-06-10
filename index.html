@@ -67,7 +67,7 @@
                 <small id="current-time"></small><br /><span
                   id="weather-description"
                 ></span>
-                <small
+                <small class="high-low-temps"
                   ><span id="high-temp"></span>/<span id="low-temp"></span
                 ></small>
               </p>
@@ -95,17 +95,27 @@
           </div>
           <h2>
             <span class="switch-to-five">5 Day Forecast </span>
-            <span class="switch-to-hourly"> Switch to Hourly</span>
+            <!-- <span class="switch-to-hourly"> Switch to Hourly</span> -->
           </h2>
           <br />
 
-          <div class="row five-forcast">
+          <div class="row five-day-forcast">
             <div class="col-sm">
-              <div class="weekday">Wednesday</div>
-              <span class="emoji">☀️</span>
-              <div class="low-high">59/75</div>
+              <div class="forcast-weekday">Wednesday</div>
+              <img
+                src="http://openweathermap.org/img/wn/10d@2x.png"
+                alt=""
+                class="forcast-icon"
+                width="42"
+              />
+              <div class="forcast-temps">
+                <span class="forecast-temp-high">59</span>/<span
+                  class="forecast-temp-low"
+                  >75</span
+                >
+              </div>
             </div>
-            <div class="col-sm">
+            <!-- <div class="col-sm">
               <div class="weekday">Thursday</div>
               <span class="emoji">🌤</span>
               <div class="low-high">59/71</div>
@@ -124,7 +134,7 @@
               <div class="weekday">Sunday</div>
               <span class="emoji">⛈</span>
               <div class="low-high">45/68</div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
