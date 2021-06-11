@@ -18,18 +18,12 @@ small {
   color: teal;
   font-size: 18px;
   font-weight: bold;
-  text-shadow: 0.3px 0.3px 0.3px white;
 }
 .card {
   max-width: 700px;
-  background-color: white;
-  border-color: #e5e1c7;
+  background: linear-gradient(-20deg, #87afac 0%, #dcb0ed 100%);
+  border-color: linear-gradient(-20deg, #87afac 0%, #dcb0ed 100%);
 }
-/* .bg-sunny-day {
-  background-image: url("images/sunny-day.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-} */
 .form-control {
   margin-bottom: 0;
 }
@@ -130,22 +124,20 @@ small {
   color: rgb(61, 60, 60);
   font-weight: bold;
   text-decoration: underline;
-  text-shadow: 0.3px 0.3px 0.3px white;
   text-underline-offset: 3px;
 }
 .high-low-temps,
 .forcast-temps {
   color: rgb(61, 60, 60);
   font-weight: bold;
-  text-shadow: 0.3px 0.3px 0.3px white;
 }
 .high-temp,
 .forecast-temp-high {
-  color: #62baac;
+  color: teal;
 }
 .low-temp,
 .forecast-temp-low {
-  color: #cf92ff;
+  color: #663399;
 }
 #fahrenheit,
 #celsius {

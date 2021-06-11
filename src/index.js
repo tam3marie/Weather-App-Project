@@ -65,7 +65,7 @@ function formatDay(timestamp) {
   return days[day];
 }
 
-function displayForecast(response) {
+function displayForecastFahrenheit(response) {
   let forecastData = response.data.daily;
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
@@ -102,7 +102,7 @@ function displayForecast(response) {
 function getForecast(coordinates) {
   let weatherApiKey = "f909d15f15ba4c8f6204927cf3507a71";
   let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${weatherApiKey}&units=imperial`;
-  axios.get(forecastApiUrl).then(displayForecast);
+  axios.get(forecastApiUrl).then(displayForecastFahrenheit);
 }
 
 function searchForCity(event) {
