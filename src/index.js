@@ -1,4 +1,4 @@
-function formDateTime() {
+function formatDateTime() {
   let days = [
     `Sunday`,
     `Monday`,
@@ -49,28 +49,51 @@ function search(searchCityInput) {
   axios.get(weatherApiUrl).then(displayCurrentWeather);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    `Sunday`,
+    `Monday`,
+    `Tuesday`,
+    `Wednesday`,
+    `Thursday`,
+    `Friday`,
+    `Saturday`,
+    `Sunday`,
+  ];
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecastData = response.data.daily;
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-sm">
-      <div class="forecast-weekday">${day}</div>
+  forecastData.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-sm">
+      <div class="forecast-weekday">${formatDay(forecastDay.dt)}</div>
       <img
-        src="http://openweathermap.org/img/wn/10d@2x.png"
-        alt=""
+        src="http://openweathermap.org/img/wn/${
+          forecastDay.weather[0].icon
+        }@2x.png"
+        alt="${forecastDay.weather[0].description}"
         class="forcast-icon"
         width="42"
       />
       <div class="forcast-temps">
-        <span class="forecast-temp-high">59</span>
+        <span class="forecast-temp-high" id="forecast-high">${Math.round(
+          forecastDay.temp.max
+        )}</span>
         /
-        <span class="forecast-temp-low">75</span>
+        <span class="forecast-temp-low" id="forecast-low">${Math.round(
+          forecastDay.temp.min
+        )}</span>
       </div>
     </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
@@ -173,5 +196,5 @@ searchCity.addEventListener("submit", searchForCity);
 let currentCity = document.querySelector("#current-button");
 currentCity.addEventListener("click", currentCityLocation);
 
-formDateTime();
+formatDateTime();
 search("New York");
