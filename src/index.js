@@ -39,8 +39,13 @@ function formatDateTime() {
   if (hours < 10) {
     hours = `0${hours}`;
   }
+  if (hours > 12) {
+    currentTime.innerHTML = `${hours - 12}:${minutes} PM`;
+  } else {
+    currentTime.innerHTML = `${hours}:${minutes} AM`;
+  }
   currentDate.innerHTML = `${day}, ${month}, ${date}, ${year}`;
-  currentTime.innerHTML = `${hours}:${minutes}`;
+  militaryTime = `${hours}:${minutes}`;
 }
 
 function search(searchCityInput) {
@@ -65,7 +70,7 @@ function formatDay(timestamp) {
   return days[day];
 }
 
-function displayForecastFahrenheit(response) {
+function displayForecast(response) {
   console.log(response.data.hourly);
   let forecastData = response.data.daily;
   let forecast = document.querySelector("#forecast");
@@ -103,7 +108,7 @@ function displayForecastFahrenheit(response) {
 function getForecast(coordinates) {
   let weatherApiKey = "f909d15f15ba4c8f6204927cf3507a71";
   let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${weatherApiKey}&units=imperial`;
-  axios.get(forecastApiUrl).then(displayForecastFahrenheit);
+  axios.get(forecastApiUrl).then(displayForecast);
 }
 
 function searchForCity(event) {
@@ -170,6 +175,7 @@ function displayFahrenheit(event) {
   fahrenheitLink.classList.remove("not-active");
   celsiusLink.classList.add("not-active");
   celsiusLink.classList.remove("active");
+  formatDateTime();
 }
 
 function displayCelsius(event) {
@@ -180,12 +186,10 @@ function displayCelsius(event) {
   celsiusLink.classList.remove("not-active");
   fahrenheitLink.classList.add("not-active");
   fahrenheitLink.classList.remove("active");
-  let forecastHigh = document.querySelector("#forecast-high");
-  forecastHigh.innerHTML = `${Math.round(
-    ((forecastDay.temp.max - 32) * 5) / 9
-  )}`;
+  document.querySelector("#current-time").innerHTML = militaryTime;
 }
 
+let militaryTime = null;
 let fahrenheitTemperature = null;
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
