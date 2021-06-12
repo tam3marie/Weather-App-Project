@@ -66,6 +66,7 @@ function formatDay(timestamp) {
 }
 
 function displayForecastFahrenheit(response) {
+  console.log(response.data.hourly);
   let forecastData = response.data.daily;
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
@@ -179,6 +180,10 @@ function displayCelsius(event) {
   celsiusLink.classList.remove("not-active");
   fahrenheitLink.classList.add("not-active");
   fahrenheitLink.classList.remove("active");
+  let forecastHigh = document.querySelector("#forecast-high");
+  forecastHigh.innerHTML = `${Math.round(
+    ((forecastDay.temp.max - 32) * 5) / 9
+  )}`;
 }
 
 let fahrenheitTemperature = null;

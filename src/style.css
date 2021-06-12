@@ -15,7 +15,6 @@ h2 {
   margin-top: -20px;
 }
 small {
-  color: teal;
   font-size: 18px;
   font-weight: bold;
 }
@@ -126,18 +125,19 @@ small {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.high-low-temps,
-.forcast-temps {
-  color: rgb(61, 60, 60);
+
+#high-temp,
+.forecast-temp-high {
+  color: #663399;
   font-weight: bold;
 }
-.high-temp,
-.forecast-temp-high {
-  color: teal;
-}
-.low-temp,
+#low-temp,
 .forecast-temp-low {
-  color: #663399;
+  color: teal;
+  font-weight: bold;
+}
+#current-time {
+  color: teal;
 }
 #fahrenheit,
 #celsius {
