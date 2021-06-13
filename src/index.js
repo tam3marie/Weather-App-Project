@@ -70,7 +70,7 @@ function formatDay(timestamp) {
   return days[day];
 }
 
-function displayForecast(response) {
+function displayForecastFahrenheit(response) {
   console.log(response.data.hourly);
   let forecastData = response.data.daily;
   let forecast = document.querySelector("#forecast");
@@ -105,10 +105,50 @@ function displayForecast(response) {
   forecast.innerHTML = forecastHTML;
 }
 
-function getForecast(coordinates) {
+function displayForecastCelsius(response) {
+  console.log(response.data.hourly);
+  let forecastData = response.data.daily;
+  let forecast = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  forecastData.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-sm">
+      <div class="forecast-weekday">${formatDay(forecastDay.dt)}</div>
+      <img
+        src="http://openweathermap.org/img/wn/${
+          forecastDay.weather[0].icon
+        }@2x.png"
+        alt="${forecastDay.weather[0].description}"
+        class="forcast-icon"
+        width="42"
+      />
+      <div class="forcast-temps">
+        <span class="forecast-temp-high" id="forecast-high">${Math.round(
+          forecastDay.temp.max
+        )}</span>
+        /
+        <span class="forecast-temp-low" id="forecast-low">${Math.round(
+          forecastDay.temp.min
+        )}</span>
+      </div>
+    </div>`;
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
+}
+
+function getForecastFahrenheit() {
   let weatherApiKey = "f909d15f15ba4c8f6204927cf3507a71";
-  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${weatherApiKey}&units=imperial`;
-  axios.get(forecastApiUrl).then(displayForecast);
+  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${weatherApiKey}&units=imperial`;
+  axios.get(forecastApiUrl).then(displayForecastFahrenheit);
+}
+function getForecastCelsius() {
+  let weatherApiKey = "f909d15f15ba4c8f6204927cf3507a71";
+  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${weatherApiKey}&units=metric`;
+  axios.get(forecastApiUrl).then(displayForecastCelsius);
 }
 
 function searchForCity(event) {
@@ -153,7 +193,11 @@ function displayCurrentWeather(response) {
     .setAttribute("alt", response.data.weather[0].description);
 
   fahrenheitTemperature = response.data.main.temp;
-  getForecast(response.data.coord);
+  fahrenheitHigh = response.data.main.temp_max;
+  fahrenheitLow = response.data.main.temp_min;
+  latitude = response.data.coord.lat;
+  longitude = response.data.coord.lon;
+  getForecastFahrenheit();
 }
 
 function currentCityLocation(event) {
@@ -175,7 +219,10 @@ function displayFahrenheit(event) {
   fahrenheitLink.classList.remove("not-active");
   celsiusLink.classList.add("not-active");
   celsiusLink.classList.remove("active");
+  document.querySelector("#high-temp").innerHTML = Math.round(fahrenheitHigh);
+  document.querySelector("#low-temp").innerHTML = Math.round(fahrenheitLow);
   formatDateTime();
+  getForecastFahrenheit();
 }
 
 function displayCelsius(event) {
@@ -186,11 +233,22 @@ function displayCelsius(event) {
   celsiusLink.classList.remove("not-active");
   fahrenheitLink.classList.add("not-active");
   fahrenheitLink.classList.remove("active");
+  document.querySelector("#high-temp").innerHTML = Math.round(
+    ((fahrenheitHigh - 32) * 5) / 9
+  );
+  document.querySelector("#low-temp").innerHTML = Math.round(
+    ((fahrenheitLow - 32) * 5) / 9
+  );
   document.querySelector("#current-time").innerHTML = militaryTime;
+  getForecastCelsius();
 }
 
 let militaryTime = null;
 let fahrenheitTemperature = null;
+let fahrenheitHigh = null;
+let fahrenheitLow = null;
+let latitude = null;
+let longitude = null;
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheit);
