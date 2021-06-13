@@ -89,13 +89,18 @@
             <div class="col-4">
               <p class="details">
                 Humidity: <span id="humidity"></span>%<br />
-                Wind Speed: <span id="wind"></span>mph
+                Wind Speed: <span id="wind"></span
+                ><span id="wind-units"> mph</span>
               </p>
             </div>
           </div>
           <h2>
-            <span class="switch-to-five">5 Day Forecast </span>
-            <!-- <span class="switch-to-hourly"> Switch to Hourly</span> -->
+            <a src="" class="active-daily-hourly" id="five-day-forecast"
+              >5 Day Forecast
+            </a>
+            <a src="" class="not-active-daily-hourly" id="hourly-forecast">
+              Switch to Hourly</a
+            >
           </h2>
           <br />
           <div class="five-day-forcast" id="forecast"></div>
