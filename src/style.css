@@ -1,5 +1,4 @@
 body {
-  border: #663399;
   font-family: "Roboto", sans-serif;
 }
 h1 {
@@ -18,10 +17,17 @@ small {
   font-size: 18px;
   font-weight: bold;
 }
+.container {
+  margin-top: 50px;
+}
 .card {
   max-width: 700px;
-  background: linear-gradient(-20deg, #87afac 0%, #dcb0ed 100%);
-  border-color: linear-gradient(-20deg, #87afac 0%, #dcb0ed 100%);
+  margin: 0 auto;
+}
+#bg-weather-image {
+  background-image: url("/src/images/Clear Sky.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .form-control {
   margin-bottom: 0;
@@ -150,4 +156,20 @@ small {
 }
 #weather-description {
   text-transform: capitalize;
+}
+
+#open-source {
+  text-align: center;
+  background-color: #d3dbdc;
+  max-width: 40%;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+#open-source a {
+  color: teal;
+}
+
+#open-source a:hover {
+  color: #663399;
 }

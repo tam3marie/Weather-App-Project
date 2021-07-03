@@ -211,6 +211,46 @@ function searchForCity(event) {
   }
   displayFahrenheit();
 }
+
+function getBackgroundImage(response) {
+  if (response === "01d" || response === "01n") {
+    return (document.getElementById("bg-weather-image").style.backgroundImage =
+      "url('/src/images/Clear Sky.jpg')");
+  }
+  if (response === "02d" || response === "02n") {
+    return (document.getElementById("bg-weather-image").style.backgroundImage =
+      "url('/src/images/Few Clouds.jpg')");
+  }
+  if (response === "03d" || response === "03n") {
+    return (document.getElementById("bg-weather-image").style.backgroundImage =
+      "url('/src/images/Scattered Clouds.jpg')");
+  }
+  if (response === "04d" || response === "04n") {
+    return (document.getElementById("bg-weather-image").style.backgroundImage =
+      "url('/src/images/Broken Clouds.jpg')");
+  }
+  if (response === "09d" || response === "09n") {
+    return (document.getElementById("bg-weather-image").style.backgroundImage =
+      "url('/src/images/Shower Rain.jpg')");
+  }
+  if (response === "10d" || response === "10n") {
+    return (document.getElementById("bg-weather-image").style.backgroundImage =
+      "url('/src/images/Rain.jpg')");
+  }
+  if (response === "11d" || response === "n") {
+    return (document.getElementById("bg-weather-image").style.backgroundImage =
+      "url('/src/images/Thunderstorm.jpg')");
+  }
+  if (response === "13d" || response === "13n") {
+    return (document.getElementById("bg-weather-image").style.backgroundImage =
+      "url('/src/images/Snow.jpg')");
+  }
+  if (response === "50d" || response === "50n") {
+    return (document.getElementById("bg-weather-image").style.backgroundImage =
+      "url('/src/images/Mist.jpg')");
+  }
+}
+
 function displayCurrentWeather(response) {
   let searchCityInput = document.querySelector("#search-city-input");
   searchCityInput.value = "";
@@ -248,6 +288,8 @@ function displayCurrentWeather(response) {
   fahrenheitLow = response.data.main.temp_min;
   latitude = response.data.coord.lat;
   longitude = response.data.coord.lon;
+  let icon = response.data.weather[0].icon;
+  getBackgroundImage(icon);
   getForecastFahrenheit();
   displayFiveDayForecast();
 }

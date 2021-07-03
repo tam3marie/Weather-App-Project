@@ -23,94 +23,104 @@
     />
     <link rel="stylesheet" href="src/style.css" />
   </head>
-  <body>
+  <body id="bg-weather-image">
     <div class="container">
-      <div class="card">
-        <div class="card-body bg-sunny-day">
-          <h1>Current Weather</h1>
-          <form id="search-city">
+      <div class="open-source">
+        <div class="card">
+          <div class="card-body">
+            <h1>Current Weather</h1>
+            <form id="search-city">
+              <div class="row">
+                <div class="col-7">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="🔍 Search City"
+                    autocomplete="off"
+                    autofocus="on"
+                    id="search-city-input"
+                  />
+                </div>
+                <div class="col-2">
+                  <input
+                    type="submit"
+                    class="btn btn-search"
+                    id="search-button"
+                    value="Search"
+                  />
+                </div>
+                <div class="col-2">
+                  <input
+                    type="button"
+                    class="btn btn-current"
+                    id="current-button"
+                    value="Current"
+                  />
+                </div>
+              </div>
+            </form>
             <div class="row">
-              <div class="col-7">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="🔍 Search City"
-                  autocomplete="off"
-                  autofocus="on"
-                  id="search-city-input"
-                />
+              <div class="col-8">
+                <p class="info">
+                  <span id="display-city"></span> <br /><span
+                    id="current-date"
+                  ></span>
+                  <small id="current-time"></small><br /><span
+                    id="weather-description"
+                  ></span>
+                  <small class="high-low-temps"
+                    ><span id="high-temp"></span>/<span id="low-temp"></span
+                  ></small>
+                </p>
+                <p class="currentTemp">
+                  <img src="" alt="" class="float-left" id="icon" /><span
+                    id="current-degrees"
+                  ></span
+                  >°<span class="f-c">
+                    <span class="fahrenheit"
+                      ><a href="#" class="active" id="fahrenheit-link"
+                        >F</a
+                      ></span
+                    >|<span class="celsius"
+                      ><a href="#" class="not-active" id="celsius-link"
+                        >C</a
+                      ></span
+                    >
+                  </span>
+                </p>
               </div>
-              <div class="col-2">
-                <input
-                  type="submit"
-                  class="btn btn-search"
-                  id="search-button"
-                  value="Search"
-                />
-              </div>
-              <div class="col-2">
-                <input
-                  type="button"
-                  class="btn btn-current"
-                  id="current-button"
-                  value="Current"
-                />
+              <div class="col-4">
+                <p class="details">
+                  Humidity: <span id="humidity"></span>%<br />
+                  Wind Speed: <span id="wind"></span
+                  ><span id="wind-units"> mph</span>
+                </p>
               </div>
             </div>
-          </form>
-          <div class="row">
-            <div class="col-8">
-              <p class="info">
-                <span id="display-city"></span> <br /><span
-                  id="current-date"
-                ></span>
-                <small id="current-time"></small><br /><span
-                  id="weather-description"
-                ></span>
-                <small class="high-low-temps"
-                  ><span id="high-temp"></span>/<span id="low-temp"></span
-                ></small>
-              </p>
-              <p class="currentTemp">
-                <img src="" alt="" class="float-left" id="icon" /><span
-                  id="current-degrees"
-                ></span
-                >°<span class="f-c">
-                  <span class="fahrenheit"
-                    ><a href="#" class="active" id="fahrenheit-link">F</a></span
-                  >|<span class="celsius"
-                    ><a href="#" class="not-active" id="celsius-link"
-                      >C</a
-                    ></span
-                  >
-                </span>
-              </p>
-            </div>
-            <div class="col-4">
-              <p class="details">
-                Humidity: <span id="humidity"></span>%<br />
-                Wind Speed: <span id="wind"></span
-                ><span id="wind-units"> mph</span>
-              </p>
-            </div>
+            <h2>
+              <a src="" class="active-daily-hourly" id="five-day-forecast"
+                >5 Day Forecast
+              </a>
+              <a src="" class="not-active-daily-hourly" id="hourly-forecast">
+                Switch to Hourly</a
+              >
+            </h2>
+            <br />
+            <div class="five-day-forcast" id="forecast"></div>
           </div>
-          <h2>
-            <a src="" class="active-daily-hourly" id="five-day-forecast"
-              >5 Day Forecast
-            </a>
-            <a src="" class="not-active-daily-hourly" id="hourly-forecast">
-              Switch to Hourly</a
-            >
-          </h2>
-          <br />
-          <div class="five-day-forcast" id="forecast"></div>
         </div>
-      </div>
-      <div id="open-source">
-        <a href="https://github.com/tam3marie/Weather-App-Project"
-          >Open-Source Code</a
-        >
-        by Tammy Knight
+        <div id="open-source">
+          <a href="https://github.com/tam3marie/Weather-App-Project"
+            >Open-Source Code</a
+          >
+          by Tammy Knight
+          <br />
+          <a
+            href="https://app.netlify.com/sites/priceless-engelbart-1ca40a/overview"
+            >Hosted</a
+          >
+          on <a href="https://www.netlify.com/">Netlify</a>
+        </div>
       </div>
     </div>
     <script src="src/index.js"></script>
