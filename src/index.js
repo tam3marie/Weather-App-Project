@@ -79,7 +79,7 @@ function formatHour(timestamp) {
   if (hour == 0) {
     return `12AM`;
   }
-  if (hour < 13) {
+  if (hour < 12) {
     return `${hour}AM`;
   }
 }
