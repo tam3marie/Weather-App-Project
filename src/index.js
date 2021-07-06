@@ -36,7 +36,7 @@ function formatDateTime() {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  if (hours < 10) {
+  if (hours < 10 && hours !== 0) {
     hours = `0${hours}`;
   }
   if (hours === 12) {
@@ -45,9 +45,13 @@ function formatDateTime() {
   if (hours > 12) {
     currentTime.innerHTML = `${hours - 12}:${minutes} PM`;
   }
-  if (hours < 12) {
+  if (hours < 12 && hours !== 0) {
     currentTime.innerHTML = `${hours}:${minutes} AM`;
   }
+  if (hours === 0) {
+    currentTime.innerHTML = `${hours + 12}:${minutes} AM`;
+  }
+
   currentDate.innerHTML = `${day}, ${month} ${date}, ${year}`;
   militaryTime = `${hours}:${minutes}`;
 }
@@ -80,14 +84,14 @@ function formatHour(timestamp) {
   if (hour > 12) {
     return `${hour - 12}PM`;
   }
-  if (hour === 0) {
-    return `12AM`;
-  }
-  if (hour < 12) {
+  if (hour < 12 && hour !== 0) {
     return `${hour}AM`;
   }
   if (hour === 12) {
     return `${hour}PM`;
+  }
+  if (hour === 0) {
+    return `${hour + 12}AM`;
   }
 }
 
